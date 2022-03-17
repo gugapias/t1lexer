@@ -1,8 +1,94 @@
 package com.company;
 
-public class Main {
+import java.util.ArrayList;
+import java.util.Arrays;
 
+public class Main {
     public static void main(String[] args) {
-	// write your code here
+        String saida = "";
+        String entrada = "a := (aux == 2) * 200 / 19";
+        entrada = entrada.replace(" ","");
+
+        String[] tst = entrada.split("");
+
+        String aux="";
+        for (String a: tst) {
+            if(a.equals(":")){
+                System.out.println("entro");
+                System.out.println(a);
+                aux = ":";
+            }
+            if(aux.equals(":") && a.equals("=")){
+                System.out.println("entro2");
+                System.out.println(aux);
+                System.out.println(a);
+                a = ":=";
+            }
+
+            if(a.equals("=")){
+                System.out.println("entro");
+                System.out.println(a);
+                aux = ":";
+            }
+            if(aux.equals("=") && a.equals("=")){
+                System.out.println("entro2");
+                System.out.println(aux);
+                System.out.println(a);
+                a = ":=";
+            }
+
+
+
+            switch (a) {
+                case ":=":
+                    saida+="(':=', ASSIGN_OP, 12)\n";
+                    aux="";
+                    break;
+                case "==":
+                    saida+="('==', EQ_OP, 11)\n";
+                    break;
+                case "<":
+                    saida+="('<', LT_OP, 10)\n";
+                    break;
+                case "/":
+                    saida+="('/', DIV_OP, 8)\n";
+                    break;
+                case "*":
+                    saida+="('*', MUL_OP, 7)\n";
+                    break;
+                case "-":
+                    saida+="('-', SUB_OP, 6)\n";
+                    break;
+                case "+":
+                    saida+="('+', ADD_OP, 5)\n";
+                    break;
+                case ")":
+                    saida+="(')', RPAREN, 4)\n";
+                    break;
+                case "(":
+                    saida+="('(', LPAREN, 3)\n";
+                    break;
+            }
+            //System.out.println(a);
+        }
+        System.out.println(entrada);
+        System.out.println(saida);
     }
 }
+
+
+//        String entrada = "a := (aux - 2) * 200 / 19";
+
+//        Token 	id	Comentário
+//        IDENT 	1	Nomes de variáveis
+//        INT_LIT	2	Números inteiros
+//        LPAREN	3	'('
+//        RPAREN	4	')'
+//        ADD_OP	5	'+'
+//        SUB_OP	6	'-'
+//        MUL_OP	7	'*'
+//        DIV_OP	8	'/'
+//        GT_OP	9	'>'
+//        LT_OP	10	'<'
+//        EQ_OP	11	'=='
+//        ASSIGN_OP	12	':='
