@@ -12,29 +12,24 @@ public class Main {
         String[] tst = entrada.split("");
 
         String aux="";
+        ArrayList<String> numeros = new ArrayList<String>();
+        
         for (String a: tst) {
-            if(a.equals(":")){
-                System.out.println("entro");
-                System.out.println(a);
-                aux = ":";
-            }
-            if(aux.equals(":") && a.equals("=")){
-                System.out.println("entro2");
-                System.out.println(aux);
-                System.out.println(a);
+         // System.out.println("entra loop>  " +a);
+          
+             if(aux.equals(":") && a.equals("=")){
                 a = ":=";
+                aux = "";
             }
-
-            if(a.equals("=")){
-                System.out.println("entro");
-                System.out.println(a);
+            if(a.equals(":")){
                 aux = ":";
             }
             if(aux.equals("=") && a.equals("=")){
-                System.out.println("entro2");
-                System.out.println(aux);
-                System.out.println(a);
-                a = ":=";
+                a = "==";
+                aux = "";
+            }
+            if(a.equals("=")){
+                aux = "=";
             }
 
 
